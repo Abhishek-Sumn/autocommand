@@ -1,12 +1,15 @@
 import { ContainerScroll } from "@/components/global/container-scroll-animation";
 import Navbar from "@/components/global/navbar";
 import { Button } from "@/components/ui/button";
-
+import { clients } from "@/lib/constant";
+import { products } from "@/lib/constant";
+import { InfiniteMovingCards } from "@/components/global/infinite-moving-cards";
+import { HeroParallax } from "@/components/global/connect-parallax";
+import { LampComponent } from "@/components/global/lamp";
 export default function Home() {
   return (
-    <main>
+    <main className="flex items-center justify-center flex-col">
       <Navbar />
-
       <section className="h-screen w-full  bg-neutral-950 rounded-md  !overflow-visible relative flex flex-col items-center  antialiased">
         <div className="absolute inset-0  h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#000_35%,#223_100%)]"></div>
         <div className="flex flex-col mt-[-100px] md:mt-[-50px]">
@@ -27,11 +30,24 @@ export default function Home() {
               </div>
             }
           />
-          
         </div>
       </section>
+   
 
 
+     <InfiniteMovingCards
+        className="md:mt-[30rem] mt-[-10px]"
+        items={clients}
+        direction="right"
+        speed="slow"
+      /> 
+      <section className="hidden sm:block">
+        <HeroParallax products = {products}></HeroParallax>
+      </section>
+
+      <section>
+        <LampComponent/>
+      </section>
     </main>
   );
 }
